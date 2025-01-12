@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos para o modo escuro */
+.dark {
+  background-color: #1f2937; /* Fundo escuro */
+  color: #f9fafb; /* Texto claro */
+}
+
+/* Estilos para o Navbar */
+.dark .bg-gray-800 {
+  background-color: #1f2937;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12); /* Sombra mais forte */
+}
+
+.bg-gray-800 {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Sombra mais forte */
+}
+
+.dark .text-white {
+  color: #f9fafb;
+}
+
+/* Estilos para os botões */
+button {
+  @apply px-4 py-2 rounded-lg transition-colors duration-300 ease-in-out shadow-md;
+}
+
+.dark button {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.65); /* Sombra mais forte para o modo escuro */
+}
+
+.dark button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Estilos para os inputs */
+input[type="text"] {
+  @apply border p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.dark input[type="text"] {
+  background-color: #374151;
+  color: #f9fafb;
+  border-color: #4b5563;
+}
+
+.dark input[type="text"]:focus {
+  @apply ring-2 ring-blue-500; /* Anel de foco para inputs no modo escuro */
+}
+
+.dark input[type="text"]:disabled {
+  background-color: #4b5563;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Estilos para o Chat */
+.chat-messages .message > div {
+  @apply shadow-md;
+  max-width: 75%;
+}
+
+.message {
+  margin-bottom: 0.5rem;
+}
+
+/* Espaçamento entre os elementos */
+.container > div {
+  @apply mb-8; /* Aumentando o espaçamento vertical */
+}
+
+.dark .chat-messages .message > div {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.65);
+}
+
+.dark .bg-blue-500 {
+  background-color: #4f46e5;
+}
+
+.dark .bg-gray-200 {
+  background-color: #374151;
+}
+
+.dark .text-gray-800 {
+  color: #f9fafb;
+}
+
+.dark .border {
+  border-color: #4b5563;
+}
+
+.dark button {
+  background-color: #4f46e5;
+  color: #f9fafb;
+}
+
+.dark button:hover {
+  background-color: #6366f1;
+}
+
+/* Estilização da Barra de Rolagem */
+.chat-messages::-webkit-scrollbar {
+  width: 10px; /* Largura da barra */
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor do fundo da barra */
+  border-radius: 10px; /* Arredondamento da barra */
+}
+
+.dark .chat-messages::-webkit-scrollbar-track {
+  background: #374151; /* Cor do fundo da barra (modo escuro) */
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #888; /* Cor do "polegar" da barra */
+  border-radius: 10px; /* Arredondamento do "polegar" */
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Cor do "polegar" ao passar o mouse */
+}
+
+.dark .chat-messages::-webkit-scrollbar-thumb {
+  background: #6b7280; /* Cor do "polegar" da barra (modo escuro) */
+}
+
+.dark .chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af; /* Cor do "polegar" ao passar o mouse (modo escuro)*/
+}
+
+/* Estilos para o resumo */
+.dark .bg-gray-100 {
+  background-color: #374151;
+}
+
+.dark .text-gray-700 {
+  color: #f9fafb;
+}
+
+.dark .border {
+  border-color: #4b5563;
+}
+
+/* Estilos para o Markdown */
+.markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6 {
+  @apply font-bold mt-4;
+}
+
+.markdown p {
+  @apply mb-2;
+}
+
+.markdown ul {
+  @apply list-disc ml-6;
+}
+
+.markdown ol {
+  @apply list-decimal ml-6;
+}
+
+.markdown li {
+  @apply mb-1;
+}
+
+.markdown pre {
+  @apply bg-gray-200 dark:bg-gray-700 p-2 rounded-md overflow-x-auto;
+}
+
+.markdown code {
+  @apply bg-gray-200 dark:bg-gray-700 px-1 rounded-md;
+}
+
+.markdown a {
+  @apply text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-500;
+}
+
+.chat-messages .message audio {
+  @apply w-full mt-2; /* Ocupa toda a largura e adiciona margem superior */
+}
+
+/* Estilizar os controles do áudio (opcional e mais complexo) */
+.chat-messages .message audio::-webkit-media-controls-panel {
+  background-color: #e2e8f0; /* Cor de fundo dos controles */
+}
+
+.dark .chat-messages .message audio::-webkit-media-controls-panel {
+  background-color: #4a5568; /* Cor de fundo dos controles (modo escuro) */
+}
