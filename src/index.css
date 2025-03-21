@@ -2,10 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Estilos para o modo escuro */
+:root {
+  --bg-color: #fff; /* Cor de fundo padrão */
+  --text-color: #222; /* Cor do texto padrão */
+  --button-bg-color: #4f46e5; /* Cor do botão */
+  --button-text-color: #fff;
+  --chat-bg-color: #e5e7eb; /* Cor de fundo do chat */
+  --chat-text-color: #222; /* Cor do texto do chat */
+  /* Adicione outras variáveis conforme necessário */
+}
+
 .dark {
-  background-color: #1f2937; /* Fundo escuro */
-  color: #f9fafb; /* Texto claro */
+  --bg-color: #1f2937; /* Cor de fundo escura */
+  --text-color: #f9fafb; /* Cor do texto claro */
+  --button-bg-color: #4f46e5; /* Cor do botão */
+  --button-text-color: #fff;
+  --chat-bg-color: #374151; /* Cor de fundo do chat escuro */
+  --chat-text-color: #f9fafb; /* Cor do texto do chat escuro */
+}
+
+/* Restante dos estilos usando as variáveis */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 /* Estilos para o Navbar */
@@ -24,6 +43,8 @@
 
 /* Estilos para os botões */
 button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
   @apply px-4 py-2 rounded-lg transition-colors duration-300 ease-in-out shadow-md;
 }
 
@@ -59,6 +80,8 @@ input[type="text"] {
 
 /* Estilos para o Chat */
 .chat-messages .message > div {
+  background-color: var(--chat-bg-color);
+  color: var(--chat-text-color);
   @apply shadow-md;
   max-width: 75%;
 }

@@ -8,9 +8,9 @@ function App() {
   const [transcription, setTranscription] = useState('');
   const [summary, setSummary] = useState('');
   const [status, setStatus] = useState('');
-  const [videoUrl, setVideoUrl] = useState('');
   const [currentTask, setCurrentTask] = useState(null);
   const [clientId, setClientId] = useState(null);
+  const [videoUrl, setVideoUrl] = useState('');
 
   const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
 
@@ -25,7 +25,7 @@ function App() {
     if (currentTask) {
       intervalId = setInterval(() => {
         checkTaskStatus(currentTask.taskId, currentTask.videoUrl);
-      }, 5000);
+      }, 5000); // Consulta a cada 5 segundos
     }
 
     return () => clearInterval(intervalId);
@@ -37,26 +37,30 @@ function App() {
     return clientId;
   };
 
-  const handleVideoSubmit = (transcription, summary, message, videoUrl, newTaskId) => {
+  const handleVideoSubmit = (transcription, summary, message, video_url, newTaskId) => {
+    setStatus('Processando...');
     setTranscription('');
     setSummary('');
+    setVideoUrl(''); // Limpa a videoUrl atual
     if (transcription) {
       setTranscription(transcription);
       setSummary(summary);
       setStatus(message);
-      setCurrentTask(null); // Finaliza a task.
+      setCurrentTask(null);
+      setVideoUrl(video_url);
     }
     if (newTaskId) {
-      setCurrentTask({ taskId: newTaskId, videoUrl });
+      setCurrentTask({ taskId: newTaskId, videoUrl: video_url });
       setStatus('Processando...');
+      setVideoUrl(video_url);
     }
   };
 
   const checkTaskStatus = async (taskId) => {
     try {
-      const response = await fetch(`${backendURL}/task_status/${taskId}`);
+      const response = await fetch(`${backendURL}/transcricao/task_status/${taskId}`);
       const data = await response.json();
-      console.log("checkTaskStatus - data:", data);
+      console.log("checkTaskStatus - data:", data); // Adiciona um log para verificar a resposta
       if (data.status === 'SUCCESS') {
         setStatus('Transcrição concluída!');
         // Buscar a transcrição e o resumo usando a rota /transcricao/
@@ -71,7 +75,7 @@ function App() {
         setCurrentTask(null);
         setStatus('Erro ao processar a transcrição.');
         console.error('Erro na task:', data.result);
-      } else if (data.status === 'PENDING') {
+      } else {
         setStatus('Processando...');
       }
     } catch (error) {
@@ -128,7 +132,7 @@ function App() {
               </div>
             </div>
           )}
-          {summary && <div className="mt-4 w-full"><Chat videoUrl={videoUrl} /></div>}
+          {summary && videoUrl && <div className="mt-4 w-full"><Chat videoUrl={videoUrl} /></div>}
         </div>
       </div>
     </div>

@@ -74,8 +74,8 @@ function VideoForm({ setStatus, setVideoUrl, onVideoSubmit }) {
           className="border p-2 rounded w-full" // Largura total
           disabled={loading}
         />
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded" disabled={loading}>
-          {loading ? 'Enviando...' : 'Enviar'}
+        <button type="submit" className="bg-blue-500 dark:bg-blue-700 text-white p-2 rounded" disabled={loading}>
+            {loading ? 'Enviando...' : 'Enviar'}
         </button>
       </form>
       {status && (
